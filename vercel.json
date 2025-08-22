@@ -38,11 +38,6 @@
       "REACT_APP_ENV": "production"
     }
   },
-  "functions": {
-    "frontend/build/**": {
-      "includeFiles": "frontend/build/**"
-    }
-  },
   "rewrites": [
     {
       "source": "/((?!api/.*).*)",
