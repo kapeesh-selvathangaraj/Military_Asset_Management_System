@@ -2,6 +2,7 @@
   "name": "military-asset-frontend",
   "version": "1.0.0",
   "description": "Frontend for Military Asset Management System",
+  "homepage": "https://kapeesh-selvathangaraj.github.io/Military_Asset_Management_System",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^2.2.7",
@@ -29,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,7 +54,8 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7"
+    "@types/react-dom": "^18.2.7",
+    "gh-pages": "^6.0.0"
   },
   "proxy": "http://localhost:5000"
 }
