@@ -1,349 +1,158 @@
 # 🛡️ Military Asset Management System
 
-A comprehensive web-based application designed for the Indian Armed Forces to manage military assets, personnel, bases, and operations with role-based access control and comprehensive audit trails.
+A secure web application for managing military assets, personnel, and bases with role-based access control for the Indian Armed Forces.
 
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
-[![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-blue.svg)](https://postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://docker.com/)
+## 🚀 Live Application
 
-## 🎯 Overview
+- **Frontend**: https://kapeesh-selvathangaraj.github.io/Military_Asset_Management_System
+- **Backend API**: https://military-asset-management-system-x5x4.onrender.com
 
-The Military Asset Management System provides a secure, scalable solution for managing military assets across the Indian Armed Forces. Built with modern web technologies and designed with military-specific requirements in mind.
+## ✨ Features
 
-### ✨ Key Features
+- **Asset Management**: Track vehicles, weapons, aircraft, and equipment
+- **Base Management**: Manage military bases with commander handover tracking
+- **Personnel Management**: User management with Indian military ranks
+- **Dashboard Analytics**: Real-time metrics and operational insights
+- **Role-Based Security**: Admin, Base Commander, Logistics Officer access levels
+- **Audit Trails**: Comprehensive logging for security and compliance
 
-- **🏛️ Base Management**: Comprehensive base management with India-specific military zones and commands
-- **👥 Personnel Management**: User management with Indian military ranks and role-based access
-- **🚁 Asset Tracking**: Track vehicles, weapons, aircraft, naval vessels, and equipment
-- **📊 Dashboard Analytics**: Real-time metrics and operational insights
-- **🔄 Commander Handover**: Track base commander changes with ceremony documentation
-- **📋 Audit Trails**: Comprehensive logging for security and compliance
-- **🔐 Role-Based Security**: Hierarchical access control for military structure
-- **🇮🇳 Indian Military Context**: Authentic Armed Forces structure with proper commands and ranks
+## 🔐 Demo Credentials
 
-## 🏗️ Architecture
+| Role | Username | Password | Description |
+|------|----------|----------|-------------|
+| Administrator | `gen_bipin` | `password123` | General Bipin Rawat |
+| Base Commander | `col_rajesh` | `password123` | Colonel Rajesh Kumar |
+| Logistics Officer | `maj_suresh` | `password123` | Major Suresh Gupta |
+| Naval Commander | `capt_vikram` | `password123` | Captain Vikram Singh |
+| Air Force Commander | `gp_capt_anjali` | `password123` | Group Captain Anjali Verma |
 
-### Tech Stack
+## 🛠️ Tech Stack
 
-**Backend:**
-- Node.js 18+ with Express.js
-- PostgreSQL 14+ database
-- JWT authentication
-- Winston logging
-- Helmet security
+**Frontend**: React 18, Tailwind CSS, React Query  
+**Backend**: Node.js, Express.js, PostgreSQL  
+**Deployment**: GitHub Pages (Frontend), Render (Backend)  
+**Security**: JWT Authentication, Role-based Access Control
 
-**Frontend:**
-- React 18+ with hooks
-- Tailwind CSS styling
-- React Query for state management
-- Axios for API calls
-- Modern responsive design
+## 🏃‍♂️ Local Development
 
-**Deployment:**
-- Docker containerization
-- Nginx reverse proxy
-- Production-ready configuration
+### Prerequisites
+- Node.js 18+
+- PostgreSQL 14+
 
-### System Requirements
-
-- **Node.js**: Version 18.0 or higher
-- **PostgreSQL**: Version 14.0 or higher
-- **Memory**: Minimum 4GB RAM
-- **Storage**: Minimum 20GB available space
-- **Network**: Secure military network environment
-
-## 🚀 Quick Start
-
-### 1. Clone Repository
+### Setup
 ```bash
-git clone <repository-url>
-cd military-asset-management
-```
+# Clone repository
+git clone https://github.com/kapeesh-selvathangaraj/Military_Asset_Management_System.git
+cd Military_Asset_Management_System
 
-### 2. Environment Setup
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit .env with your configuration
-nano .env
-```
-
-### 3. Database Setup
-```bash
-# Install PostgreSQL and create database
-sudo -u postgres psql
-CREATE DATABASE military_assets;
-CREATE USER military_user WITH ENCRYPTED PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE military_assets TO military_user;
-
-# Apply schema
-psql -U military_user -d military_assets -f backend/database/schema-postgresql.sql
-```
-
-### 4. Backend Setup
-```bash
+# Backend setup
 cd backend
 npm install
+cp .env.example .env
+# Edit .env with your database credentials
 npm run dev
-```
 
-### 5. Frontend Setup
-```bash
+# Frontend setup (new terminal)
 cd frontend
 npm install
 npm start
 ```
 
-### 6. Access Application
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000
-
-## 🔐 Default Credentials
-
-After running the data seeding script:
-
-| Role | Username | Password | Description |
-|------|----------|----------|-------------|
-| Admin | `admin` | `password123` | System administrator |
-| Base Commander | `col_rajesh` | `password123` | Base commander role |
-| Logistics Officer | `maj_suresh` | `password123` | Logistics operations |
-
-## 🐳 Docker Deployment
-
-### Development
+### Database Setup
 ```bash
-docker-compose up -d
-```
+# Create PostgreSQL database
+createdb military_assets
 
-### Production
-```bash
-docker-compose -f docker-compose.prod.yml up -d
-```
+# Apply schema
+psql -d military_assets -f backend/database/schema-postgresql.sql
 
-### Local Production Mode
-```bash
-# Windows
-start-production.bat
-
-# Linux/macOS
-./start-production.sh
+# Seed sample data
+cd backend
+node scripts/seed-military.js
 ```
 
 ## 📁 Project Structure
 
 ```
-military-asset-management/
-├── backend/                 # Node.js backend
-│   ├── config/             # Database and app configuration
-│   ├── routes/             # API route handlers
-│   ├── middleware/         # Custom middleware
-│   ├── database/           # Database schema and migrations
-│   ├── scripts/            # Utility and seeding scripts
-│   └── logs/               # Application logs
-├── frontend/               # React frontend
+├── backend/           # Node.js API server
+│   ├── routes/        # API endpoints
+│   ├── middleware/    # Auth & security middleware
+│   ├── database/      # Schema and migrations
+│   └── scripts/       # Utility scripts
+├── frontend/          # React application
 │   ├── src/
-│   │   ├── components/     # Reusable React components
-│   │   ├── pages/          # Page components
-│   │   ├── contexts/       # React contexts
-│   │   └── config/         # Frontend configuration
-│   └── public/             # Static assets
-├── docs/                   # Documentation
-├── docker-compose*.yml     # Docker configurations
-└── README.md              # This file
+│   │   ├── components/ # Reusable components
+│   │   ├── pages/     # Page components
+│   │   └── contexts/  # React contexts
+│   └── public/        # Static assets
+└── .github/workflows/ # Auto-deployment
 ```
 
-## 🔧 Configuration
+## 🔧 Environment Variables
 
-### Environment Variables
-
-Key configuration options in `.env`:
-
+### Backend (.env)
 ```env
-# Database
 DATABASE_URL=postgresql://user:pass@localhost:5432/military_assets
-
-# Security
 JWT_SECRET=your-secret-key
-RATE_LIMIT_MAX_REQUESTS=100
-
-# Server
 PORT=5000
-NODE_ENV=production
-FRONTEND_URL=http://localhost:3000
+NODE_ENV=development
 ```
 
-See `.env.example` for complete configuration options.
+### Frontend (.env.local)
+```env
+REACT_APP_API_URL=http://localhost:5000
+REACT_APP_ENV=development
+```
 
-## 🛡️ Security Features
+## 🚀 Deployment
 
-- **JWT Authentication**: Stateless token-based authentication
-- **Role-Based Access Control**: Four-tier military hierarchy
-- **Rate Limiting**: Protection against brute force attacks
-- **Security Headers**: Helmet.js security middleware
-- **Audit Logging**: Comprehensive activity tracking
-- **Input Validation**: Joi schema validation
-- **SQL Injection Protection**: Parameterized queries
+The application is automatically deployed using GitHub Actions:
+- **Frontend**: Deployed to GitHub Pages on push to master
+- **Backend**: Deployed to Render with PostgreSQL database
 
-## 📊 API Documentation
+## 📊 API Endpoints
 
 ### Authentication
-```bash
-POST /api/auth/login
-POST /api/auth/register
-GET /api/auth/profile
-POST /api/auth/logout
-```
+- `POST /api/auth/login` - User login
+- `GET /api/auth/profile` - Get user profile
+- `POST /api/auth/logout` - User logout
 
-### Asset Management
-```bash
-GET /api/assets
-POST /api/assets
-PUT /api/assets/:id
-DELETE /api/assets/:id
-```
+### Assets
+- `GET /api/assets` - List assets
+- `POST /api/assets` - Create asset
+- `PUT /api/assets/:id` - Update asset
+- `DELETE /api/assets/:id` - Delete asset
 
-### User Management
-```bash
-GET /api/users
-POST /api/users
-PUT /api/users/:id
-GET /api/users/:id/activity
-```
+### Users & Bases
+- `GET /api/users` - List users
+- `GET /api/bases` - List bases
+- `POST /api/bases/:id/commander-handover` - Commander handover
 
-### Base Management
-```bash
-GET /api/bases
-POST /api/bases
-PUT /api/bases/:id
-POST /api/bases/:id/commander-handover
-```
+## 🛡️ Security
 
-For complete API documentation, see `MILITARY_ASSET_MANAGEMENT_DOCUMENTATION.md`.
+- JWT token-based authentication
+- Role-based access control (RBAC)
+- Rate limiting on API endpoints
+- Input validation and sanitization
+- Comprehensive audit logging
+- HTTPS enforcement in production
 
-## 🧪 Testing
-
-### Run Tests
-```bash
-# Backend tests
-cd backend
-npm test
-
-# Frontend tests
-cd frontend
-npm test
-```
-
-### Load Testing
-```bash
-# Install artillery
-npm install -g artillery
-
-# Run load tests
-artillery run tests/load-test.yml
-```
-
-## 📈 Monitoring
-
-### Health Checks
-- **Backend Health**: `GET /api/health`
-- **Database Health**: `GET /api/health/db`
-- **System Metrics**: `GET /api/metrics`
-
-### Logging
-- **Error Logs**: `backend/logs/error.log`
-- **Combined Logs**: `backend/logs/combined.log`
-- **Audit Logs**: `backend/logs/audit.log`
-
-## 🔄 Maintenance
-
-### Database Backup
-```bash
-# Create backup
-pg_dump -U military_user military_assets > backup_$(date +%Y%m%d).sql
-
-# Restore backup
-psql -U military_user -d military_assets < backup_20250822.sql
-```
-
-### Log Rotation
-```bash
-# Rotate logs (automated via logrotate)
-sudo logrotate /etc/logrotate.d/military-assets
-```
-
-### Updates
-```bash
-# Pull latest changes
-git pull origin main
-
-# Update dependencies
-npm update
-
-# Apply database migrations
-npm run migrate
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit changes (`git commit -am 'Add new feature'`)
-4. Push to branch (`git push origin feature/new-feature`)
-5. Create Pull Request
-
-### Development Guidelines
-- Follow military coding standards
-- Include comprehensive tests
-- Update documentation
-- Ensure security compliance
-- Test with all user roles
-
-## 📋 Deployment Checklist
-
-### Pre-Deployment
-- [ ] Environment variables configured
-- [ ] Database schema applied
-- [ ] SSL certificates installed
-- [ ] Security headers enabled
-- [ ] Rate limiting configured
-- [ ] Backup procedures tested
-
-### Post-Deployment
-- [ ] Health checks passing
-- [ ] Logs monitoring active
-- [ ] User access verified
-- [ ] Performance metrics baseline
-- [ ] Security scan completed
-- [ ] Documentation updated
-
-## 🆘 Troubleshooting
+## 🔍 Troubleshooting
 
 ### Common Issues
 
-**Database Connection Errors:**
-```bash
-# Check PostgreSQL status
-sudo systemctl status postgresql
+**Login fails**: Ensure database is seeded with user data  
+**API connection errors**: Check backend is running and CORS is configured  
+**Build failures**: Clear node_modules and reinstall dependencies
 
-# Verify connection
-psql -U military_user -d military_assets -c "SELECT 1;"
-```
+### Health Checks
+- Backend: `GET /api/health`
+- Database: Check logs in `backend/logs/`
 
-**Frontend Build Issues:**
-```bash
-# Clear cache and reinstall
-rm -rf node_modules package-lock.json
-npm install
-npm run build
-```
+## 📄 License
 
-**Authentication Problems:**
-```bash
-# Verify JWT secret
-echo $JWT_SECRET
+For Official Use Only - Restricted to authorized military personnel.
 
-# Check user credentials
-psql -U military_user -d military_assets -c "SELECT username, role FROM users;"
-```
+---
+
+**🎯 Ready to use!** Visit the live application or set up locally for development.
