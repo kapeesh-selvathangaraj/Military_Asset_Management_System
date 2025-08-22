@@ -1,0 +1,288 @@
+# Military Asset Management System - .gitignore
+# Generated on: 2025-08-22
+
+# ===================================
+# SECURITY & SENSITIVE FILES
+# ===================================
+# Environment variables and secrets
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.staging
+*.env
+
+# SSL certificates and keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+ssl/
+certs/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs and audit files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ===================================
+# NODE.JS & NPM
+# ===================================
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# ===================================
+# REACT & FRONTEND BUILD
+# ===================================
+# Production build
+build/
+dist/
+
+# Static files
+static/
+
+# React development
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ===================================
+# DOCKER & CONTAINERS
+# ===================================
+# Docker volumes
+docker-data/
+postgres-data/
+redis-data/
+
+# Docker override files
+docker-compose.override.yml
+docker-compose.local.yml
+
+# ===================================
+# DATABASE & BACKUPS
+# ===================================
+# Database dumps
+*.sql
+*.dump
+backups/
+db-backups/
+
+# Database connection files
+database.json
+db-config.json
+
+# ===================================
+# DEVELOPMENT TOOLS
+# ===================================
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ===================================
+# TESTING & COVERAGE
+# ===================================
+# Test results
+test-results/
+coverage/
+.coverage
+htmlcov/
+
+# Jest
+jest-coverage/
+
+# ===================================
+# DEPLOYMENT & CI/CD
+# ===================================
+# Deployment scripts (keep templates)
+deploy.sh
+deploy-prod.sh
+!deploy-template.sh
+
+# CI/CD secrets
+.github/secrets/
+.gitlab-ci-secrets/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Kubernetes secrets
+k8s-secrets/
+*.secret.yaml
+
+# ===================================
+# MONITORING & ANALYTICS
+# ===================================
+# Application monitoring
+newrelic.js
+.newrelic.yml
+
+# Analytics
+google-analytics.json
+mixpanel.json
+
+# ===================================
+# MILITARY SPECIFIC
+# ===================================
+# Classified documents
+classified/
+restricted/
+confidential/
+
+# Military data exports
+*.xlsx
+*.csv
+asset-exports/
+personnel-exports/
+
+# Audit reports
+audit-reports/
+compliance-reports/
+
+# ===================================
+# CUSTOM PROJECT FILES
+# ===================================
+# Local development overrides
+local-config.js
+dev-overrides/
+
+# Documentation builds
+docs/build/
+documentation/build/
+
+# Scripts that might contain sensitive data
+setup-local.sh
+init-dev.sh
+
+# ===================================
+# KEEP THESE FILES (NEGATIVE PATTERNS)
+# ===================================
+# Keep important config templates
+!.env.example
+!.env.template
+!docker-compose.example.yml
+
+# Keep documentation
+!README.md
+!SECURITY.md
+!PRODUCTION.md
+!*.md
+
+# Keep schema and migration files
+!backend/database/schema-postgresql.sql
+!backend/database/migrations/
+
+# Keep Docker files
+!Dockerfile
+!docker-compose.yml
+!docker-compose.prod.yml
+!.dockerignore
+
+# Keep CI/CD templates
+!.github/workflows/
+!.gitlab-ci.yml
+
+# Keep essential scripts
+!scripts/setup.sh
+!scripts/deploy-template.sh
