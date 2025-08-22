@@ -206,15 +206,28 @@ const Login = () => {
           <div className="space-y-3 text-sm">
             <div className="bg-white/10 rounded-lg p-3 hover:bg-white/20 transition-colors duration-200">
               <div className="text-blue-300 font-medium">🔧 Administrator</div>
-              <div className="text-gray-300 font-mono">admin / password123</div>
+              <div className="text-gray-300 font-mono">gen_bipin / password123</div>
+              <div className="text-xs text-gray-400 mt-1">General Bipin Rawat</div>
             </div>
             <div className="bg-white/10 rounded-lg p-3 hover:bg-white/20 transition-colors duration-200">
               <div className="text-blue-300 font-medium">⭐ Base Commander</div>
-              <div className="text-gray-300 font-mono">cmd_liberty / password123</div>
+              <div className="text-gray-300 font-mono">col_rajesh / password123</div>
+              <div className="text-xs text-gray-400 mt-1">Colonel Rajesh Kumar</div>
             </div>
             <div className="bg-white/10 rounded-lg p-3 hover:bg-white/20 transition-colors duration-200">
               <div className="text-blue-300 font-medium">📦 Logistics Officer</div>
-              <div className="text-gray-300 font-mono">log_officer1 / password123</div>
+              <div className="text-gray-300 font-mono">maj_suresh / password123</div>
+              <div className="text-xs text-gray-400 mt-1">Major Suresh Gupta</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-3 hover:bg-white/20 transition-colors duration-200">
+              <div className="text-blue-300 font-medium">🚢 Naval Commander</div>
+              <div className="text-gray-300 font-mono">capt_vikram / password123</div>
+              <div className="text-xs text-gray-400 mt-1">Captain Vikram Singh</div>
+            </div>
+            <div className="bg-white/10 rounded-lg p-3 hover:bg-white/20 transition-colors duration-200">
+              <div className="text-blue-300 font-medium">✈️ Air Force Commander</div>
+              <div className="text-gray-300 font-mono">gp_capt_anjali / password123</div>
+              <div className="text-xs text-gray-400 mt-1">Group Captain Anjali Verma</div>
             </div>
           </div>
         </div>
