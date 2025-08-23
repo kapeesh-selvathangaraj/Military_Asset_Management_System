@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
-import axios from 'axios';
 import api from '../config/api';
 import toast from 'react-hot-toast';
 
