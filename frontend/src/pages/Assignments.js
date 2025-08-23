@@ -548,7 +548,7 @@ const CreateAssignmentModal = ({ type, onClose, onSuccess }) => {
     }
 
     try {
-      await axios.post('/api/assignments', payload);
+      await api.post('/api/assignments', payload);
       onSuccess();
     } catch (error) {
       console.error('Error creating assignment:', error);

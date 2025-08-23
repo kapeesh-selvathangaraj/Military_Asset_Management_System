@@ -91,13 +91,13 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Configure axios defaults
+  // Configure API defaults
   useEffect(() => {
     if (state.token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
+      api.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
       localStorage.setItem('token', state.token);
     } else {
-      delete axios.defaults.headers.common['Authorization'];
+      delete api.defaults.headers.common['Authorization'];
       localStorage.removeItem('token');
     }
   }, [state.token]);
@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
           console.error('Auth check failed:', error);
           localStorage.removeItem('token');
-          delete axios.defaults.headers.common['Authorization'];
+          delete api.defaults.headers.common['Authorization'];
           dispatch({ type: AUTH_ACTIONS.LOGOUT });
         }
       } else {

@@ -119,7 +119,7 @@ const ProfileTab = ({ profileData }) => {
 
   const updateProfileMutation = useMutation(
     async (data) => {
-      const response = await axios.put('/api/auth/profile', {
+      const response = await api.put('/api/auth/profile', {
         first_name: data.firstName,
         last_name: data.lastName,
         email: data.email
@@ -251,7 +251,7 @@ const SecurityTab = () => {
 
   const changePasswordMutation = useMutation(
     async (data) => {
-      const response = await axios.put('/api/auth/change-password', {
+      const response = await api.put('/api/auth/change-password', {
         currentPassword: data.currentPassword,
         newPassword: data.newPassword
       });

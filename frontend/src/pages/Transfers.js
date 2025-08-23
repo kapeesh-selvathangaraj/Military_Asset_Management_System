@@ -373,7 +373,7 @@ const CreateTransferModal = ({ onClose, onSuccess }) => {
       if (formData.reason) payload.reason = formData.reason;
       if (formData.notes) payload.notes = formData.notes;
 
-      await axios.post('/api/transfers', payload);
+      await api.post('/api/transfers', payload);
       onSuccess();
     } catch (error) {
       console.error('Error creating transfer:', error);

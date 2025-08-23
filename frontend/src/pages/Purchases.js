@@ -350,7 +350,7 @@ const CreatePurchaseModal = ({ onClose, onSuccess }) => {
       if (formData.supplier) payload.vendor = formData.supplier;
       if (formData.notes) payload.notes = formData.notes;
 
-      await axios.post('/api/purchases', payload);
+      await api.post('/api/purchases', payload);
       onSuccess();
     } catch (error) {
       console.error('Error creating purchase:', error);
