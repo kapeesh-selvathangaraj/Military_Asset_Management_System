@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import { DocumentArrowDownIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 import { format, startOfMonth, endOfMonth } from 'date-fns';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
@@ -23,7 +23,7 @@ const Reports = () => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     },
     {
@@ -35,7 +35,7 @@ const Reports = () => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );
@@ -51,7 +51,7 @@ const Reports = () => {
         ...Object.fromEntries(Object.entries(filters).filter(([_, value]) => value))
       });
       
-      const response = await axios.get(`/api/reports?${params}`);
+      const response = await api.get(`/api/reports?${params}`);
       return response.data;
     }
   );
@@ -74,7 +74,7 @@ const Reports = () => {
         ...Object.fromEntries(Object.entries(filters).filter(([_, value]) => value))
       });
       
-      const response = await axios.get(`/api/reports/export?${params}`, {
+      const response = await api.get(`/api/reports/export?${params}`, {
         responseType: 'blob'
       });
       

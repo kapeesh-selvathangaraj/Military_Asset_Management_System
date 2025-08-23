@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { FunnelIcon, EyeIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
@@ -46,7 +46,7 @@ const Assets = () => {
         params.append(paramKey, paramVal);
       });
 
-      const response = await axios.get(`/api/assets?${params}`);
+      const response = await api.get(`/api/assets?${params}`);
       return response.data;
     }
   );
@@ -55,7 +55,7 @@ const Assets = () => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     },
     {
@@ -67,7 +67,7 @@ const Assets = () => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );
@@ -351,7 +351,7 @@ const AssetDetailsModal = ({ asset, onClose }) => {
   const { data: assetDetails, isLoading } = useQuery(
     ['asset-details', asset.id],
     async () => {
-      const response = await axios.get(`/api/assets/${asset.id}`);
+      const response = await api.get(`/api/assets/${asset.id}`);
       return response.data;
     }
   );
@@ -592,7 +592,7 @@ const CreateAssetModal = ({ onClose, onSuccess }) => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     }
   );
@@ -601,7 +601,7 @@ const CreateAssetModal = ({ onClose, onSuccess }) => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );
@@ -619,7 +619,7 @@ const CreateAssetModal = ({ onClose, onSuccess }) => {
     setIsSubmitting(true);
 
     try {
-      await axios.post('/api/assets', {
+      await api.post('/api/assets', {
         ...formData,
         purchase_cost: formData.purchase_cost ? parseFloat(formData.purchase_cost) : null
       });

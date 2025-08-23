@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { PlusIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
@@ -29,7 +29,7 @@ const Purchases = () => {
         if (value) params.append(key, value);
       });
       
-      const response = await axios.get(`/api/purchases?${params}`);
+      const response = await api.get(`/api/purchases?${params}`);
       return response.data;
     }
   );
@@ -38,7 +38,7 @@ const Purchases = () => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     }
   );
@@ -47,7 +47,7 @@ const Purchases = () => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );
@@ -303,7 +303,7 @@ const CreatePurchaseModal = ({ onClose, onSuccess }) => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     }
   );
@@ -312,7 +312,7 @@ const CreatePurchaseModal = ({ onClose, onSuccess }) => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );

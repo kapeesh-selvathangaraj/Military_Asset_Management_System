@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { FunnelIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
@@ -30,7 +30,7 @@ const Transfers = () => {
         if (value) params.append(key, value);
       });
       
-      const response = await axios.get(`/api/transfers?${params}`);
+      const response = await api.get(`/api/transfers?${params}`);
       return response.data;
     }
   );
@@ -39,7 +39,7 @@ const Transfers = () => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     }
   );
@@ -48,7 +48,7 @@ const Transfers = () => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );
@@ -336,7 +336,7 @@ const CreateTransferModal = ({ onClose, onSuccess }) => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     }
   );
@@ -345,7 +345,7 @@ const CreateTransferModal = ({ onClose, onSuccess }) => {
   const { data: assetTypesData } = useQuery(
     'asset-types',
     async () => {
-      const response = await axios.get('/api/assets/types');
+      const response = await api.get('/api/assets/types');
       return response.data;
     }
   );

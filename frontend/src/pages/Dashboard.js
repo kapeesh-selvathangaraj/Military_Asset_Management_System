@@ -11,7 +11,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { format } from 'date-fns';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
@@ -32,7 +32,7 @@ const Dashboard = () => {
       if (filters.startDate) params.append('startDate', filters.startDate);
       if (filters.endDate) params.append('endDate', filters.endDate);
       
-      const response = await axios.get(`/api/dashboard/metrics?${params}`);
+      const response = await api.get(`/api/dashboard/metrics?${params}`);
       return response.data;
     },
     {
@@ -48,7 +48,7 @@ const Dashboard = () => {
       if (filters.baseId) params.append('baseId', filters.baseId);
       params.append('limit', '10');
       
-      const response = await axios.get(`/api/dashboard/recent-activities?${params}`);
+      const response = await api.get(`/api/dashboard/recent-activities?${params}`);
       return response.data;
     }
   );
@@ -57,7 +57,7 @@ const Dashboard = () => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     },
     {

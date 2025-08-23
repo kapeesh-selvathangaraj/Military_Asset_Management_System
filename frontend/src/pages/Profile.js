@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { UserIcon, KeyIcon, ShieldCheckIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import { toast } from 'react-hot-toast';
@@ -17,7 +17,7 @@ const Profile = () => {
   const { data: profileData, isLoading } = useQuery(
     'user-profile',
     async () => {
-      const response = await axios.get('/api/auth/profile');
+      const response = await api.get('/api/auth/profile');
       return response.data;
     }
   );
@@ -384,7 +384,7 @@ const ActivityTab = () => {
   const { data: activityData, isLoading } = useQuery(
     'user-activity',
     async () => {
-      const response = await axios.get('/api/auth/activity');
+      const response = await api.get('/api/auth/activity');
       return response.data;
     }
   );

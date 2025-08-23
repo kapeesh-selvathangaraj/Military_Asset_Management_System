@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { PlusIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
-import axios from 'axios';
+import api from '../config/api';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
@@ -30,7 +30,7 @@ const Assignments = () => {
         if (value) params.append(key, value);
       });
       
-      const response = await axios.get(`/api/assignments?${params}`);
+      const response = await api.get(`/api/assignments?${params}`);
       return response.data;
     },
     {
@@ -47,7 +47,7 @@ const Assignments = () => {
         if (value) params.append(key, value);
       });
       
-      const response = await axios.get(`/api/assignments/expenditures?${params}`);
+      const response = await api.get(`/api/assignments/expenditures?${params}`);
       return response.data;
     },
     {
@@ -59,7 +59,7 @@ const Assignments = () => {
   const { data: basesData } = useQuery(
     'bases',
     async () => {
-      const response = await axios.get('/api/bases');
+      const response = await api.get('/api/bases');
       return response.data;
     }
   );
@@ -68,7 +68,7 @@ const Assignments = () => {
   const { data: usersData } = useQuery(
     'users',
     async () => {
-      const response = await axios.get('/api/users');
+      const response = await api.get('/api/users');
       return response.data;
     }
   );
@@ -504,7 +504,7 @@ const CreateAssignmentModal = ({ type, onClose, onSuccess }) => {
   const { data: assetsData } = useQuery(
     'available-assets',
     async () => {
-      const response = await axios.get('/api/assets?current_status=available');
+      const response = await api.get('/api/assets?current_status=available');
       return response.data;
     }
   );
@@ -513,7 +513,7 @@ const CreateAssignmentModal = ({ type, onClose, onSuccess }) => {
   const { data: usersData } = useQuery(
     'users',
     async () => {
-      const response = await axios.get('/api/users');
+      const response = await api.get('/api/users');
       return response.data;
     }
   );
