@@ -77,15 +77,15 @@ const Assignments = () => {
     setFilters(prev => ({ ...prev, [key]: value, offset: 0 }));
   };
 
-  const getStatusBadge = (status) => {
-    const statusClasses = {
-      active: 'badge-success',
-      returned: 'badge-info',
-      lost: 'badge-danger',
-      damaged: 'badge-warning'
-    };
-    return statusClasses[status] || 'badge-gray';
-  };
+  // const getStatusBadge = (status) => {
+  //   const statusClasses = {
+  //     active: 'badge-success',
+  //     returned: 'badge-info',
+  //     lost: 'badge-danger',
+  //     damaged: 'badge-warning'
+  //   };
+  //   return statusClasses[status] || 'badge-gray';
+  // };
 
   // const getStatusText = (status) => {
   //   const statusTexts = {
