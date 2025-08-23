@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { PlusIcon, FunnelIcon, UserIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { useQuery, useQueryClient } from 'react-query';
+import { PlusIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
 const Assignments = () => {
-  const { user, hasRole, hasAnyRole } = useAuth();
+  const { user, hasAnyRole } = useAuth();
   const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('assignments');
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -87,15 +87,15 @@ const Assignments = () => {
     return statusClasses[status] || 'badge-gray';
   };
 
-  const getStatusText = (status) => {
-    const statusTexts = {
-      active: 'Active',
-      returned: 'Returned',
-      lost: 'Lost',
-      damaged: 'Damaged'
-    };
-    return statusTexts[status] || status;
-  };
+  // const getStatusText = (status) => {
+  //   const statusTexts = {
+  //     active: 'Active',
+  //     returned: 'Returned',
+  //     lost: 'Lost',
+  //     damaged: 'Damaged'
+  //   };
+  //   return statusTexts[status] || status;
+  // };
 
   const canCreateAssignment = hasAnyRole(['admin', 'base_commander']);
   const isLoading = assignmentsLoading || expendituresLoading;
@@ -488,7 +488,7 @@ const ExpendituresTable = ({ data, filters, onFilterChange }) => {
 
 // Create Assignment Modal Component
 const CreateAssignmentModal = ({ type, onClose, onSuccess }) => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     asset_id: '',

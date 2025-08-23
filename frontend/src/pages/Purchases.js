@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { PlusIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
 import axios from 'axios';
@@ -21,7 +21,7 @@ const Purchases = () => {
   });
 
   // Fetch purchases
-  const { data: purchasesData, isLoading, refetch } = useQuery(
+  const { data: purchasesData, isLoading } = useQuery(
     ['purchases', filters],
     async () => {
       const params = new URLSearchParams();

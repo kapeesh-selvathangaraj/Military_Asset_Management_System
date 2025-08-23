@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { DocumentArrowDownIcon, ChartBarIcon, CalendarIcon, FunnelIcon } from '@heroicons/react/24/outline';
-import { format, subDays, startOfMonth, endOfMonth } from 'date-fns';
+import { DocumentArrowDownIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
@@ -41,7 +41,7 @@ const Reports = () => {
   );
 
   // Fetch report data based on selected type
-  const { data: reportData, isLoading, refetch } = useQuery(
+  const { data: reportData, isLoading } = useQuery(
     ['reports', reportType, dateRange, filters],
     async () => {
       const params = new URLSearchParams({

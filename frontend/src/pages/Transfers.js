@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { ArrowRightIcon, FunnelIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { useQuery, useQueryClient } from 'react-query';
+import { FunnelIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 
 const Transfers = () => {
-  const { user, hasRole, hasAnyRole } = useAuth();
+  const { hasAnyRole } = useAuth();
   const queryClient = useQueryClient();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [filters, setFilters] = useState({
@@ -22,7 +22,7 @@ const Transfers = () => {
   });
 
   // Fetch transfers
-  const { data: transfersData, isLoading, refetch } = useQuery(
+  const { data: transfersData, isLoading } = useQuery(
     ['transfers', filters],
     async () => {
       const params = new URLSearchParams();

@@ -9,8 +9,8 @@ import LoadingSpinner from '../components/UI/LoadingSpinner';
 import { toast } from 'react-hot-toast';
 
 const Profile = () => {
-  const { user, getRoleDisplayName } = useAuth();
-  const queryClient = useQueryClient();
+  const { getRoleDisplayName } = useAuth();
+  // const queryClient = useQueryClient();
   const [activeTab, setActiveTab] = useState('profile');
 
   // Fetch user profile

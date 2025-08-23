@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { CubeIcon, FunnelIcon, EyeIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { useQuery, useQueryClient } from 'react-query';
+import { FunnelIcon, EyeIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { format } from 'date-fns';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
